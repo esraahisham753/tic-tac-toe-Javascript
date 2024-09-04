@@ -54,6 +54,7 @@ function checkWin() {
   if (circleWins) {
     infoDisplay.textContent = "Circle Wins!";
     cleanBoard();
+    displayReset();
   }
 
   let crossWins = false;
@@ -64,10 +65,12 @@ function checkWin() {
   });
   if (crossWins) {
     infoDisplay.textContent = "cross Wins!";
+    displayReset();
     cleanBoard();
   }
 
   if (!(circleWins || crossWins) && checkCompleted()) {
+    displayReset();
     infoDisplay.textContent = "Tie!";
   }
 }
@@ -92,6 +95,26 @@ function checkCompleted() {
   }
 
   return true;
+}
+
+function reset() {
+  gameBoard.innerHTML = '';
+  hideReset();
+  createBoard();
+  infoDisplay.textContent = "Circle goes first";
+  go = 'circle';
+}
+
+function displayReset() {
+  const btn = document.querySelector('#reset');
+  btn.classList.remove('hidden');
+  btn.classList.add('visible');
+}
+
+function hideReset() {
+  const btn = document.querySelector('#reset');
+  btn.classList.remove('visible');
+  btn.classList.add('hidden');
 }
 
 createBoard();

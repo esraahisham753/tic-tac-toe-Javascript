@@ -79,4 +79,18 @@ button {
     background-color: #6C48C5;
     color: white;
     text-transform: uppercase;
+    cursor: pointer;
+    display: none;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }
